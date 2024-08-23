@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* General styles */
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .sidebar i {
+            font-size: 24px;
+            margin: 20px 0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .sidebar i:hover::after {
+            content: attr(data-hover);
+            position: absolute;
+            left: 60px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #181818;
+            color: #ffffff;
+        }
+
+        .dark-mode .sidebar {
+            background-color: #222;
+        }
+
+        .dark-mode .sidebar i {
+            color: #aaa;
+        }
+
+        .dark-mode .sidebar i:hover::after {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .dark-mode-toggle {
+            background-color: #444;
+            color: #fff;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .light-mode .sidebar {
+            background-color: #f0f0f0;
+        }
+
+        .light-mode .sidebar i {
+            color: #555;
+        }
+
+        .light-mode .sidebar i:hover::after {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .light-mode .dark-mode-toggle {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        /* Toggle button position */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px; /* Move back to top right */
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="dark-mode"> <!-- Default to dark mode -->
+    <div class="sidebar">
+        <i class="bx bx-search" data-hover="Search"></i>
+        <i class="bx bx-folder" data-hover="Files"></i>
+        <i class="bx bx-envelope" data-hover="Chat"></i>
+    </div>
+
+    <button class="dark-mode-toggle" onclick="toggleMode()">Toggle Light Mode</button>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.dark-mode-toggle');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                toggleButton.textContent = 'Toggle Dark Mode';
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                toggleButton.textContent = 'Toggle Light Mode';
+            }
+        }
+    </script>
+</body>
+</html>
